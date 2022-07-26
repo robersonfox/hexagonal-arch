@@ -1,0 +1,38 @@
+server:
+  port: 8081
+
+spring:
+  jpa:
+    show-sql: true
+    format-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://t07cxyau6qg7o5nz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/i795ik1v2l6bmfzk
+    username: ey6e0cwl3s6w005v
+    password: wzoufajaxgpfh9nv
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    pool-size: 5
+    hikari:
+      driver-class-name: com.mysql.jdbc.Driver
+  mvc:
+    servelet:
+      path: /hexagonal
+
+java:
+  naming:
+    factory:
+      initial: com.sun.enterprise.naming.SerialInitContextFactory
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, ping
+    health:
+      group:
+        custom:
+          include: health, ping
