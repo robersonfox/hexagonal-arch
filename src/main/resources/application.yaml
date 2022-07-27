@@ -11,13 +11,13 @@ spring:
         ddl-auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
-    url: jdbc:mysql://t07cxyau6qg7o5nz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/i795ik1v2l6bmfzk
-    username: ey6e0cwl3s6w005v
-    password: uwcujfku4sw2xwm5
+    url: ${db_url}
+    username: ${db_user_name}
+    password: ${db_password}
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    pool-size: 2
+    pool-size: 1
     hikari:
       driver-class-name: com.mysql.jdbc.Driver
   mvc:
