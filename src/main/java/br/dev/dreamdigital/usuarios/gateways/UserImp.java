@@ -92,7 +92,7 @@ public class UserImp implements UserGateway {
     private Login handleLogin(UserRequest u) {
         return Login.builder()
                 .username(u.getLogin().getUsername())
-                .password(StringUtils.toSha256(u.getLogin().getPassword()))
+                .password(u.getLogin().getPassword())
                 .build();
     }
 
@@ -103,6 +103,6 @@ public class UserImp implements UserGateway {
     private void simpleWritePhoto(String photo, String fn) throws IOException {
         new File(PATH_IMAGE).mkdirs();
         File file = new File(PATH_IMAGE + fn);
-        Files.write(file.toPath(), Arrays.asList(photo), StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
+        Files.write(file.toPath(), Arrays.asList(photo), StandardCharsets.UTF_8, StandardOpenOption.CREATE);
     }
 }

@@ -18,9 +18,8 @@ public class UserUseCase {
     public void create(UserRequest request) throws Exception {
         log.info("UserUseCase.create()");
 
-        request.getLogin()
-                .setPassword(
-                        StringUtils.toSha256(request.getLogin().getPassword()));
+        String password = StringUtils.toSha256(request.getLogin().getPassword());
+        request.getLogin().setPassword(password);
 
         try {
             user.save(request);
