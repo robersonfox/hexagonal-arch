@@ -1,12 +1,16 @@
 server:
   port: 8081
-
 spring:
+  sql:
+    init:
+      mode: embedded
   jpa:
     show-sql: true
     format-sql: true
     generate-ddl: true
-    properties: 
+    hibernate:
+      ddl-auto: update
+    properties:
       hibernate:
         ddl-auto: update
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect

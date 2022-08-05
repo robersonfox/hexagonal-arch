@@ -6,6 +6,8 @@ import com.google.common.hash.Hashing;
 
 public class StringUtils {
 
+    public static final String EMPTY = "";
+
     private StringUtils() {
     }
 
