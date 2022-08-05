@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +21,8 @@ import lombok.NonNull;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Credentials implements Serializable {
+@Table(name = "login", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
+public class Login implements Serializable {
     @Id
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
