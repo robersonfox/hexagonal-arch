@@ -20,6 +20,7 @@ spring:
     pool-size: 1
     hikari:
       driver-class-name: com.mysql.jdbc.Driver
+      maximum-pool-size: 1
   mvc:
     servelet:
       path: /api
