@@ -29,18 +29,17 @@ public class LoginUseCase {
             Login login = loginGateway.findByUsernameAndPassword(userName, password);
             String token = loginGateway.getToken(login.getUsername());
 
-            Long userId = login.getUser().getId();
+            Long id = login.getUser().getId();
             String loginName = login.getUsername();
 
             List<PerfilResponse> perfils = new ArrayList<>();
-            login.getUser().getPerfil().forEach(p -> {
-                PerfilResponse perfil = new PerfilResponse();
-                perfil.setTipo(p.getTipo());
-                perfils.add(perfil);
-            });
+            login.getUser().getPerfil().forEach(
+                    p -> perfils.add(PerfilResponse.builder()
+                            .tipo(p.getTipo())
+                            .build()));
 
             return LoginResponse.builder()
-                    .userId(userId)
+                    .userId(id)
                     .login(loginName)
                     .token(token)
                     .perfil(perfils)

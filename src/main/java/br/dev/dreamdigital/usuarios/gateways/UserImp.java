@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -104,5 +107,29 @@ public class UserImp implements UserGateway {
         new File(PATH_IMAGE).mkdirs();
         File file = new File(PATH_IMAGE + fn);
         Files.write(file.toPath(), Arrays.asList(photo), StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+    }
+
+    @Override
+    public List<UserResponse> findAll() throws Exception {
+        List<UserResponse> response = new ArrayList<>();
+
+        loginRepository.findAll().forEach(login -> {
+            User user = login.getUser();
+
+            List<String> perfils = login.getUser()
+                    .getPerfil()
+                    .stream()
+                    .map(Perfil::getTipo)
+                    .collect(Collectors.toList());
+
+            response.add(UserResponse.builder()
+                    .login(login.getUsername())
+                    .name(user.getName())
+                    .email(user.getEmail())
+                    .perfil(perfils)
+                    .build());
+        });
+
+        return response;
     }
 }
