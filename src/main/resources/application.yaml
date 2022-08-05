@@ -22,7 +22,7 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
   mvc:
     servelet:
-      path: /hexagonal
+      path: /api
 
 java:
   naming:
