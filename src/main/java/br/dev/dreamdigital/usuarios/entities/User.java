@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,9 +29,14 @@ public class User implements Serializable {
     @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
     private Long id;
-    
+
+    @NotBlank(message = "Nome é obrigatório")
     private String name;
+
+    @Email
+    @NotBlank(message = "Email é obrigatório")
     private String email;
+
     private String photo;
 
     @OneToMany
