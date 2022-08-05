@@ -10,4 +10,6 @@ import br.dev.dreamdigital.usuarios.entities.Login;
 @Repository
 public interface LoginRepository extends CrudRepository<Login, Long> {
     Optional<Login> findByUsernameAndPassword(String username, String password);
+
+    Optional<Login> findByUsername(String username);
 }

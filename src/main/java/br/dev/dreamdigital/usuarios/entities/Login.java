@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,9 +33,10 @@ public class Login implements Serializable {
     @OneToOne
     private User user;
 
-    @NonNull
+    @NotBlank(message = "Username é obrigatório")
     private String username;
 
     @NonNull
+    @Min(value = 6, message = "Senha deve ter no mínimo 6 caracteres")
     private String password;
 }

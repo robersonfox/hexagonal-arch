@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.dev.dreamdigital.usuarios.gateways.reponse.LoginResponse;
 import br.dev.dreamdigital.usuarios.gateways.request.LoginRequest;
+import br.dev.dreamdigital.usuarios.gateways.response.LoginResponse;
 import br.dev.dreamdigital.usuarios.usecases.LoginUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

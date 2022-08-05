@@ -1,21 +1,19 @@
 package br.dev.dreamdigital.usuarios.gateways;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
-import com.google.common.hash.Hashing;
-
 import br.dev.dreamdigital.usuarios.entities.Login;
 import br.dev.dreamdigital.usuarios.gateways.repositories.LoginRepository;
+import br.dev.dreamdigital.usuarios.utils.StringUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Component
 @RequiredArgsConstructor
-public class LoginImp implements ILogin {
+public class LoginImp implements LoginGateway {
 
     private final LoginRepository loginRepository;
 
@@ -43,10 +41,7 @@ public class LoginImp implements ILogin {
     public Login findByUsernameAndPassword(String username, String password) throws Exception {
 
         Optional<Login> opLogin = loginRepository.findByUsernameAndPassword(
-                username,
-                Hashing.sha256()
-                        .hashString(password, StandardCharsets.UTF_8)
-                        .toString());
+                username, StringUtils.toSha256(password));
 
         if (opLogin.isPresent()) {
             return opLogin.get();
@@ -57,8 +52,6 @@ public class LoginImp implements ILogin {
 
     @Override
     public String getToken(String id) {
-        return Hashing.sha256()
-                .hashString(id, StandardCharsets.UTF_8)
-                .toString();
+        return StringUtils.toSha256(id);
     }
 }

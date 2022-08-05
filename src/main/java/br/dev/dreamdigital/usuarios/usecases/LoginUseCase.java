@@ -3,9 +3,9 @@ package br.dev.dreamdigital.usuarios.usecases;
 import org.springframework.stereotype.Service;
 
 import br.dev.dreamdigital.usuarios.entities.Login;
-import br.dev.dreamdigital.usuarios.gateways.ILogin;
-import br.dev.dreamdigital.usuarios.gateways.reponse.LoginResponse;
+import br.dev.dreamdigital.usuarios.gateways.LoginGateway;
 import br.dev.dreamdigital.usuarios.gateways.request.LoginRequest;
+import br.dev.dreamdigital.usuarios.gateways.response.LoginResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j2;
 @Service
 @RequiredArgsConstructor
 public class LoginUseCase {
-    private final ILogin loginGateway;
+    private final LoginGateway loginGateway;
 
     public LoginResponse execute(LoginRequest params) throws Exception {
         log.info("LoginUseCase.getById()");

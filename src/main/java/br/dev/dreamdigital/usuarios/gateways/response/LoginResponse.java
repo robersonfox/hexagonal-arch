@@ -1,4 +1,4 @@
-package br.dev.dreamdigital.usuarios.gateways.reponse;
+package br.dev.dreamdigital.usuarios.gateways.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

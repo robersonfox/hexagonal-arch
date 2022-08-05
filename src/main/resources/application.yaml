@@ -15,7 +15,6 @@ spring:
     username: ${db_user_name}
     password: ${db_password}
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     pool-size: 1
     hikari:
